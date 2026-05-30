@@ -16,7 +16,7 @@ jobs:
           node-version: 20
           cache: npm
 
-      - run: npm install
+      - run: npm ci          # ← cambio aquí
       - run: npm test
       - run: npm run lint
       - run: docker build -t github-actions-node .
