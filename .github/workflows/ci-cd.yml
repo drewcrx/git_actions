@@ -16,7 +16,17 @@ jobs:
           node-version: 20
           cache: npm
 
-      - run: npm ci          # ← cambio aquí
-      - run: npm test
-      - run: npm run lint
-      - run: docker build -t github-actions-node .
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Correr pruebas
+        run: npm test
+
+      - name: Correr linter
+        run: npm run lint
+
+      - name: Construir imagen Docker
+        run: docker build -t github-actions-node .
+
+      - name: Desplegar con Docker Compose
+        run: docker compose up -d
